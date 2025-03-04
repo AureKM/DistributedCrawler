@@ -133,26 +133,6 @@
 
 ------
 
-## 项目结构
-
-```python
-DistributedCrawler/
-├── Distributed_Web_Crawler-main/
-│   ├── URLManager.java            # URL 管理模块
-│   ├── kafka分发url.py            # Kafka URL 分发模块
-│   └── redis分发url.py            # Redis URL 分发模块
-├── movie_test/
-│   ├── spiders/
-│   │   └── get_movie.py           # 数据爬取模块
-│   ├── pipelines.py               # 数据存储模块
-│   ├── api.py                     # 数据查询模块
-│   ├── settings.py                # 配置文件
-│   └── main.py                    # 多进程爬取入口
-└── README.md                      # 项目文档
-```
-
-------
-
 ## 许可证
 
 本项目采用 [MIT 许可证](https://license/)。
