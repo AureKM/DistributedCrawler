@@ -1,0 +1,2 @@
+redis==4.5.5
+apache-flink==1.16.0
