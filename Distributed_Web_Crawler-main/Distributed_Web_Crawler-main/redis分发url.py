@@ -30,8 +30,6 @@ class Fbspc(object):
 
     # （2）获取服务器响应数据
     def get_content(self,request):
-        # +------------------------------------------------------------------------------------------------------------------------+
-        # 校验时间 2022-8-15  14:56 ,若代理池不可用，注释掉分割线内的内容，并将分割线下方的response取消注释
         free_proxies_pool = [
             {'http': '223.94.85.131:9091'},
             {'http': '217.60.194.52:8080'},
@@ -44,7 +42,6 @@ class Fbspc(object):
         handler = urllib.request.ProxyHandler(proxies=proxies)
         opener = urllib.request.build_opener(handler)
         response = opener.open(request)
-        # +------------------------------------------------------------------------------------------------------------------------+
 
         # response = urllib.request.urlopen(request)
 
