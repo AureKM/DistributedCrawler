@@ -8,7 +8,7 @@
 
 ## 项目背景
 
-随着互联网的快速发展，网页数据量呈指数级增长。传统的单机爬虫系统在面对海量数据时，往往面临效率低下、扩展性差等问题。为了解决这些问题，分布式爬虫系统应运而生。通过分布式架构，系统可以将爬取任务分发到多个节点并行执行，从而大幅提升爬取效率。
+分布式爬虫系统通过分布式架构，系统可以将爬取任务分发到多个节点并行执行，从而大幅提升爬取效率。
 
 本项目旨在实现一个简易的分布式爬虫系统，结合 **Flink** 流式计算框架、**Kafka/Redis** 消息队列、**Scrapy** 爬虫框架以及 **MySQL** 数据库，构建一个高效、可扩展的分布式爬虫系统。
 
@@ -65,7 +65,7 @@
 
 - **功能**：基于 Flink 实现 URL 的去重和管理。
 - **实现**：从 Kafka 中读取 URL，通过 Flink 进行去重处理，并将去重后的 URL 写回 Kafka 或 Redis。
-- **核心代码**：`URLManager.java`
+- **核心代码**：`urlmanager.py`
 
 ### 2. URL 分发模块
 
@@ -105,6 +105,14 @@
 
 ------
 
+# 项目结构
+
+- **核心模块**：基于 Flink、Kafka/Redis 实现 URL 的去重与分发。
+- **URL 管理模块**：负责种子 URL 的管理、去重及分发策略。
+- **数据爬取与存储模块**：使用 Scrapy 进行数据爬取，MySQL 存储数据，Flask 提供查询接口。
+
+------
+
 ## 项目运行
 
 ### 环境要求
@@ -123,33 +131,13 @@
    - 启动 Kafka 服务，并创建 `step1` 和 `step2` 主题。
    - 启动 Redis 服务。
 2. **运行 URL 管理模块**：
-   - 编译并运行 `URLManager.java`。
+   - 编译并运行 `urlmanager.py`。
 3. **运行 URL 分发模块**：
    - 运行 `kafka分发url.py` 或 `redis分发url.py`。
 4. **运行数据爬取模块**：
    - 运行 `main.py`，启动 Scrapy 爬虫。
 5. **运行数据查询模块**：
    - 运行 `api.py`，启动 Flask API 服务。
-
-------
-
-## 项目结构
-
-```python
-DistributedCrawler/
-├── Distributed_Web_Crawler-main/
-│   ├── URLManager.java            # URL 管理模块
-│   ├── kafka分发url.py            # Kafka URL 分发模块
-│   └── redis分发url.py            # Redis URL 分发模块
-├── movie_test/
-│   ├── spiders/
-│   │   └── get_movie.py           # 数据爬取模块
-│   ├── pipelines.py               # 数据存储模块
-│   ├── api.py                     # 数据查询模块
-│   ├── settings.py                # 配置文件
-│   └── main.py                    # 多进程爬取入口
-└── README.md                      # 项目文档
-```
 
 ------
 
